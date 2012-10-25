@@ -6,7 +6,7 @@
 	<script src="{{ STATIC_URL }}js/jquery.js"></script>
 	<script src="{{ STATIC_URL }}js/radmin.js"></script>
 	<script>radmin.init('{% get_admin_context %}')</script>
-
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/radmin.css" />
 {% endblock %}
 {% block branding %}
 <h1 id="site-name">{% trans 'Django administration' %}</h1>
