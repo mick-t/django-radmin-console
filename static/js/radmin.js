@@ -9,11 +9,11 @@ var radmin = {
 
 $r = radmin.jQuery;
 
-$r(function(){
-	
-	
-})
 
+radmin.init = function(thing){
+	console.log(thing);
+
+}
 
 
 

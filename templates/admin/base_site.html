@@ -1,10 +1,12 @@
 {% extends "admin/base.html" %}
-{% load i18n %}
+{% load i18n %}{% load radmin_extras %}
 
 {% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
 {% block extrahead %}
 	<script src="{{ STATIC_URL }}js/jquery.js"></script>
 	<script src="{{ STATIC_URL }}js/radmin.js"></script>
+	<script>radmin.init('{% get_admin_context %}')</script>
+
 {% endblock %}
 {% block branding %}
 <h1 id="site-name">{% trans 'Django administration' %}</h1>
