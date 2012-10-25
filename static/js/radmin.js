@@ -40,18 +40,25 @@ radmin.build_ui = function(data){
 }
 
 radmin.add_control = function(item){
+	var btn_wrap = document.createElement('span')
 	var btn = document.createElement('button');
+	btn_wrap.className="radmin-control-btn-wrap";
 	btn.id = item.target;
 	btn.innerText = item.label;
 	btn.addEventListener('click',radmin.runcommand);
-	radmin.cw.appendChild(btn);
+	btn_wrap.appendChild(btn);
+	radmin.cw.appendChild(btn_wrap);
 }
 
 radmin.runcommand = function(e){
 	var caller = e.target;
+	var loadicon = document.createElement('span');
+	loadicon.className='radmin-loading';
+	caller.parentNode.appendChild(loadicon);
 	data = {'target':caller.id}
 	$r.get("/radmin/rnr/", data, function(data){
-		console.log(data);
+		// do something with data
+		$r(loadicon).remove();
 	});
 	
 }
