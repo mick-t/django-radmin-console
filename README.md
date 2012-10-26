@@ -1,4 +1,4 @@
-# Radmin the totally rad django admin tool.
+# Radmin the totally rad django admin console.
 
 ## Install & Config
 Make sure the ```django.template.loaders.app_directories.Loader``` is enabled
