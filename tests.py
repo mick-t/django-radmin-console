@@ -1,6 +1,6 @@
 from django.test import TestCase
 from radmin.utils import *
-from radmin.commands import *
+from radmin.console import *
 
 class TestUtils(TestCase):
     def test_radmin_import(self):
