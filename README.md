@@ -49,10 +49,19 @@ from radmin import console
 
 admin.site.register(Thing)
 
-# radmin starts here
-console.register_to_all('Everywhere Action', 'thinger.views.current_datetime', True) # shows up everwhere
-console.register_to_admin_index('Admin Index Action', 'thinger.views.current_datetime', True) # shows up only at admin_index
-console.register_to_app('Thinger', 'App level action', 'thinger.views.current_datetime') #shows up at app index /admin/app
-console.register_to_model_list(Thing, 'Model List Level Action','thinger.views.current_datetime') #shows up when you are at the model list eg /admin/app/model
-console.register_to_model(Thing, 'Model Level Action', 'thinger.views.get_current_model_name') # shows up at single model /admin/app/model/id. The call back should expect to recieve the model id back
+# ----------------------------------------------radmin starts here-------------------------------------
+# shows up everwhere
+console.register_to_all('Everywhere Action', 'myapp.views.current_datetime', True) 
+
+# shows up only at /admin
+console.register_to_admin_index('Admin Index Action', 'myapp.views.current_datetime', True) 
+
+#shows up at app index /admin/app
+console.register_to_app('MyApp', 'App level action', 'myapp.views.current_datetime') 
+
+#shows up when you are at the model list eg /admin/app/model
+console.register_to_model_list(Thing, 'Model List Level Action','myapp.views.current_datetime') 
+
+# shows up at single model /admin/app/model/id. The call back should expect to recieve the model id back
+console.register_to_model(Thing, 'Model Level Action', 'myapp.views.get_current_model_name') 
 ```
