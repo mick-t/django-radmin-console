@@ -38,25 +38,33 @@ def runner(request):
         if target in REGISTERED_NAMED_ITEMS:
             console_item = REGISTERED_NAMED_ITEMS[target]
             mod = radmin_import(console_item['callback'])
-            try:
-                if data:
-                    output = mod(data)
-                else:
-                    output = mod()
-                result = {'result':'success', 'output':output, 'display_result':console_item['display_result']}
-            except Exception as e:
-                result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
+            if mod:
+                try:
+                    if data:
+                        output = mod(data)
+                    else:
+                        output = mod()
+                    result = {'result':'success', 'output':output, 'display_result':console_item['display_result']}
+                except Exception as e:
+                    result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
 
-            return HttpResponse(json.dumps(result), mimetype="application/json")
+                return HttpResponse(json.dumps(result), mimetype="application/json")
+            else:
+                result = {'result':'error', 'output':'No Module Found', 'display_result':console_item['display_result']}
+                return HttpResponse(json.dumps(result), mimetype="application/json")
 
         elif target in REGISTERED_TO_ALL:
             console_item = REGISTERED_TO_ALL[target]
             mod = radmin_import(console_item['callback'])
-            try:
-                result = {'result':'success', 'output':mod(),'display_result':console_item['display_result']}
-            except Exception as e:
-                result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
-            return HttpResponse(json.dumps(result), mimetype="application/json")
+            if mod:
+                try:
+                    result = {'result':'success', 'output':mod(),'display_result':console_item['display_result']}
+                except Exception as e:
+                    result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
+                return HttpResponse(json.dumps(result), mimetype="application/json")
+            else:
+                result = {'result':'error', 'output':'No Module Found', 'display_result':console_item['display_result']}
+                return HttpResponse(json.dumps(result), mimetype="application/json")
 
         return HttpResponse(json.dumps({'result':'not_found_error'}), mimetype="application/json")
 

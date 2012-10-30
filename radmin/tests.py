@@ -7,3 +7,4 @@ class TestUtils(TestCase):
         """ testing loading a module by string """
         impo = radmin_import('radmin.views.sample')
         self.assertEqual(impo(), 'Hi there!')
+        self.assertEqual(None,radmin_import('radmin.views.idontexist'))
