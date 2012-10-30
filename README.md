@@ -51,7 +51,7 @@ admin.site.register(Thing)
 
 # ----------------------------------------------radmin starts here-------------------------------------
 # shows up everwhere
-console.register_to_all('Everywhere Action', 'myapp.views.current_datetime', True) 
+console.register_to_all('Everywhere Action', 'myapp.views.current_datetime', True) # True means show the return value of the method called.
 
 # shows up only at /admin
 console.register_to_admin_index('Admin Index Action', 'myapp.views.current_datetime', True) 
