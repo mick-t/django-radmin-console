@@ -72,6 +72,7 @@ radmin.add_control = function(item){
 	btn_wrap.appendChild(btn);
 	var loadicon = document.createElement('span');
 	loadicon.className ='radmin-loading';
+	loadicon.style.background = "url('"+radmin.ctx.static+"css/287.gif') center no-repeat";
 	loadicon.style.display = 'none';
 	btn_wrap.appendChild(loadicon);
 	radmin.cw.appendChild(btn_wrap);

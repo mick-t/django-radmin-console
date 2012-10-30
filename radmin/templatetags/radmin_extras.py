@@ -1,11 +1,12 @@
 from django import template
 from django.utils import simplejson as json
-
+from django.conf import settings
 register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def get_admin_context(context):
-    ctx = {'location':None, 'param1':None, 'param2':None}
+
+    ctx = {'location':None, 'param1':None, 'param2':None, 'static':settings.STATIC_URL}
     try:
         context['app_list']
         if len(context['app_list']) > 1:
