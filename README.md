@@ -65,6 +65,20 @@ console.register_to_model_list(Thing, 'Model List Level Action','myapp.views.cur
 # shows up at single model /admin/app/model/id. The call back should expect to recieve the model id back
 console.register_to_model(Thing, 'Model Level Action', 'myapp.views.get_current_model_name') 
 ```
+## Sample Callbacks
+Call backs should return something. Here are some examples of callbacks I use.
+```
+154 def clear_memcache():
+155     try:
+156         import memcache
+157         mc = memcache.Client(['127.0.0.1:11211'], debug=0)
+158         mc.flush_all()
+159         return "Memcache cleared"
+160     except ImportError:
+161         return "Failed: python-memcache not installed"
+162 
+```
+
 ## Screenshots
 Click the link to open it up
 ![ScreenShot](http://d3j5vwomefv46c.cloudfront.net/photos/full/679987940.png?key=568148&Expires=1351623985&Key-Pair-Id=APKAIYVGSUJFNRFZBBTA&Signature=vjZH-DgJfH7qsmSDSiPObRBesO0P-ricQhc9aou~UslrBm002ZF1Anf1YljDY4VfIxU~r9FimP3SWYpSgT46C~Zk8eM41uBgLsl0N~k9mSVvr~jNSxHU5ieO36llIhD58Hv2UIBSIyxYoZ3OCM4nVAPDPZkqPVACn59rCH9jk1U_)
