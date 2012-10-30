@@ -81,7 +81,7 @@ Call backs should return something. Here are some examples of callbacks I use.
 
 ## Screenshots
 Click the link to open it up
-![ScreenShot](http://d3j5vwomefv46c.cloudfront.net/photos/full/679987940.png?key=568148&Expires=1351623985&Key-Pair-Id=APKAIYVGSUJFNRFZBBTA&Signature=vjZH-DgJfH7qsmSDSiPObRBesO0P-ricQhc9aou~UslrBm002ZF1Anf1YljDY4VfIxU~r9FimP3SWYpSgT46C~Zk8eM41uBgLsl0N~k9mSVvr~jNSxHU5ieO36llIhD58Hv2UIBSIyxYoZ3OCM4nVAPDPZkqPVACn59rCH9jk1U_)
+![ScreenShot](https://lh3.googleusercontent.com/-lg5zbvmkYTM/UJBN4OzDqxI/AAAAAAAAAoI/mti49XMzvRg/s568/Screenshot+from+2012-10-30+14%3A41%3A12.png)
 
 Return values are displayed in console
-![ScreenShot](http://d3j5vwomefv46c.cloudfront.net/photos/full/679988278.png?key=496165&Expires=1351623944&Key-Pair-Id=APKAIYVGSUJFNRFZBBTA&Signature=pufK05u2SzhA0eMhSPxptKRCzgWxGRmakq~f1gPu6Hw6siK3G9b8tlBfdElTSGilmWky9yRvP2T8hY05TVaVhF0S6mGLvdjtWVnmDDt0jMY4H5IUpFOcN0cN2aBf6wVIleCgzrCrgL5nKtQVjcuah-mqbW5ewfES~vM31tp0Qxk_)
+![ScreenShot](https://lh6.googleusercontent.com/-maNSz8KqMIE/UJBN4Knef5I/AAAAAAAAAoE/s-GM-sbZEcM/s496/Screenshot+from+2012-10-30+14%3A42%3A44.png)
