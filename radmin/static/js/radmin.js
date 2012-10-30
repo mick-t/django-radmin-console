@@ -27,6 +27,16 @@ radmin.build_ui = function(data){
 	// we are gonna hijack the django admin container  a bit
 	var container = document.getElementById("container");
 	var header = document.getElementById("header");
+	var user_tools = document.getElementById("user-tools");
+	// add a simple link that enables disables radmin
+	user_tools.innerHTML +="/ "
+	var radmin_link = document.createElement("a");
+
+	radmin_link.innerText = "Radmin Console";
+	radmin_link.href = "#";
+	radmin_link.id = "radmin-console-link"
+	radmin.link = radmin_link;
+	user_tools.appendChild(radmin_link);
 	var console_wrap = document.createElement('div');
 	console_wrap.id = "radmin-console-wrap";
 	container.appendChild(console_wrap);
@@ -37,6 +47,12 @@ radmin.build_ui = function(data){
 	for(d in data){
 		radmin.add_control(data[d]);
 	}
+	// enable the button
+	
+	$r(radmin_link).click(function(e){
+		e.preventDefault();
+		radmin.toggle_console();
+	});
 }
 
 radmin.control_meta = {} // stores data by key
@@ -44,6 +60,7 @@ radmin.control_meta = {} // stores data by key
 radmin.add_control = function(item){
 	var btn_wrap = document.createElement('span')
 	var btn = document.createElement('button');
+	btn.className="radmin-button";
 	btn_wrap.className="radmin-control-btn-wrap";
 	btn.id = item.target;
 	btn.innerText = item.label;
@@ -53,14 +70,17 @@ radmin.add_control = function(item){
 		radmin.control_meta[item.target] = item.data;
 	}
 	btn_wrap.appendChild(btn);
+	var loadicon = document.createElement('span');
+	loadicon.className ='radmin-loading';
+	loadicon.style.display = 'none';
+	btn_wrap.appendChild(loadicon);
 	radmin.cw.appendChild(btn_wrap);
 }
 
 radmin.runcommand = function(e){
 	var caller = e.target;
-	var loadicon = document.createElement('span');
-	loadicon.className='radmin-loading';
-	caller.parentNode.appendChild(loadicon);
+	var loadicon = $r(caller.parentNode).children(".radmin-loading");
+	loadicon.show();
 	meta = radmin.control_meta[caller.id];
 	if(meta!=undefined){
 		data = {'target':caller.id, 'data':meta}
@@ -68,7 +88,7 @@ radmin.runcommand = function(e){
 		data = {'target':caller.id}
 	}
 	$r.get("/radmin/rnr/", data, function(data){
-		$r(loadicon).remove();
+		$r(loadicon).hide();
 		// display message if appropriate
 		if(data.display_result){
 			radmin.make_mssg(data.output);
@@ -78,9 +98,21 @@ radmin.runcommand = function(e){
 }
 
 radmin.make_mssg = function(output){
-	console.log(output);
+	var mssg = document.createElement('ul');
+	mssg.className ="messagelist";
+	mssg.innerHTML = '<li class="info">'+output+'</li>'
+	$r(radmin.cw).prepend(mssg);
+	// fade out the message
+	setTimeout(function(){
+		$r(".messagelist").fadeOut();
+	},3000)
+
 }
 
-
+radmin.toggle_console = function(){
+	var l = $r(radmin.link);
+	l.toggleClass("radmin-link-active");
+	$r(radmin.cw).toggle();
+}
 
 
