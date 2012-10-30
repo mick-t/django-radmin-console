@@ -65,3 +65,6 @@ console.register_to_model_list(Thing, 'Model List Level Action','myapp.views.cur
 # shows up at single model /admin/app/model/id. The call back should expect to recieve the model id back
 console.register_to_model(Thing, 'Model Level Action', 'myapp.views.get_current_model_name') 
 ```
+## Screenshots
+![ScreenShot](http://d3j5vwomefv46c.cloudfront.net/photos/full/679987940.png?key=568148&Expires=1351623985&Key-Pair-Id=APKAIYVGSUJFNRFZBBTA&Signature=vjZH-DgJfH7qsmSDSiPObRBesO0P-ricQhc9aou~UslrBm002ZF1Anf1YljDY4VfIxU~r9FimP3SWYpSgT46C~Zk8eM41uBgLsl0N~k9mSVvr~jNSxHU5ieO36llIhD58Hv2UIBSIyxYoZ3OCM4nVAPDPZkqPVACn59rCH9jk1U_)
+
