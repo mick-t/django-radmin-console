@@ -39,7 +39,7 @@ def get_admin_context(context):
         # editing a model
         ctx['location']= 'model_edit'
         ctx['param1'] = context['original'].__class__.__name__.lower()
-        ctx['param2'] = context['original'].id
+        ctx['param2'] = context['original'].pk
         return json.dumps(ctx)
     except KeyError:
         pass
