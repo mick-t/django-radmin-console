@@ -8,6 +8,10 @@ var radmin = {
 };
 
 $r = radmin.jQuery;
+$r.ajaxSetup ({
+    // Disable caching of AJAX responses
+    cache: false
+});
 
 radmin.init = function(ctx){
 	// gets called even before dom is ready
@@ -15,6 +19,7 @@ radmin.init = function(ctx){
 }
 
 $r(function(){
+
 	// Once the dom is ready, continue
 	// do the request to radmin
 	$r.get("/radmin/ep/", radmin.ctx, function(data){
