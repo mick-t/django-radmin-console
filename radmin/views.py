@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import simplejson as json
+from django.views.decorators.cache import never_cache
 from radmin.console import REGISTERED_NAMED_ITEMS, REGISTERED_TO_ALL
 from radmin.utils import *
 
+@never_cache
 @staff_member_required
 def entry_point(request):
     """ This is the entry point for radmin console."""
@@ -29,6 +31,7 @@ def entry_point(request):
 
         return HttpResponse(json.dumps(controls), mimetype="application/json")
 
+@never_cache
 @staff_member_required
 def runner(request):
     if request.is_ajax():
