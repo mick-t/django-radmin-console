@@ -37,7 +37,7 @@ radmin.build_ui = function(data){
 	user_tools.innerHTML +="/ "
 	var radmin_link = document.createElement("a");
 
-	radmin_link.innerText = "Radmin Console";
+	radmin_link.innerHTML = "Radmin Console";
 	radmin_link.href = "#";
 	radmin_link.id = "radmin-console-link"
 	radmin.link = radmin_link;
@@ -68,7 +68,7 @@ radmin.add_control = function(item){
 	btn.className="radmin-button";
 	btn_wrap.className="radmin-control-btn-wrap";
 	btn.id = item.target;
-	btn.innerText = item.label;
+	btn.innerHTML = item.label;
 	btn.addEventListener('click',radmin.runcommand);
 	// also store any data item in the control_meta
 	if(item.data != undefined && item.data != null && item.data != ''){
