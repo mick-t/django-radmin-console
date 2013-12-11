@@ -18,7 +18,7 @@ setup(
     download_url='https://github.com/asmedrano/django-radmin-console/downloads',
     include_package_data = True,    
     packages = ['radmin'],
-    package_data = {'radmin': 'radamin/*'},
+    package_data = {'radmin': ['radamin/*']},
     classifiers=[
         'Development Status::4- Beta',
         'Environment :: Web Environment',
