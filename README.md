@@ -1,6 +1,10 @@
 # Radmin the totally rad django admin console.
 
 ## Install & Config
+You can use pip to install the package like so:
+```
+pip install git+git://github.com/asmedrano/django-radmin-console.git
+```
 Make sure the ```django.template.loaders.app_directories.Loader``` is enabled
 
 Ex:
