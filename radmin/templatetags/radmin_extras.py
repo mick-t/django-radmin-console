@@ -1,5 +1,5 @@
 from django import template
-from django.utils import simplejson as json
+import json
 from django.conf import settings
 register = template.Library()
 
