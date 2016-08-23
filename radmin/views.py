@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.contrib.admin.views.decorators import staff_member_required
-from django.utils import simplejson as json
+import json
 from django.views.decorators.cache import never_cache
 from radmin.console import REGISTERED_NAMED_ITEMS, REGISTERED_TO_ALL
 from radmin.utils import *
@@ -29,7 +29,7 @@ def entry_point(request):
             value = REGISTERED_NAMED_ITEMS[param1]
             controls.append({'label':value['label'],'target':param1, 'data':param2})
 
-        return HttpResponse(json.dumps(controls), mimetype="application/json")
+        return HttpResponse(json.dumps(controls), content_type="application/json")
 
 @never_cache
 @staff_member_required
@@ -51,10 +51,10 @@ def runner(request):
                 except Exception as e:
                     result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
 
-                return HttpResponse(json.dumps(result), mimetype="application/json")
+                return HttpResponse(json.dumps(result), content_type="application/json")
             else:
                 result = {'result':'error', 'output':'No Module Found', 'display_result':console_item['display_result']}
-                return HttpResponse(json.dumps(result), mimetype="application/json")
+                return HttpResponse(json.dumps(result), content_type="application/json")
 
         elif target in REGISTERED_TO_ALL:
             console_item = REGISTERED_TO_ALL[target]
@@ -64,12 +64,12 @@ def runner(request):
                     result = {'result':'success', 'output':mod(),'display_result':console_item['display_result']}
                 except Exception as e:
                     result = {'result':'error', 'output':e, 'display_result':console_item['display_result']}
-                return HttpResponse(json.dumps(result), mimetype="application/json")
+                return HttpResponse(json.dumps(result), content_type="application/json")
             else:
                 result = {'result':'error', 'output':'No Module Found', 'display_result':console_item['display_result']}
-                return HttpResponse(json.dumps(result), mimetype="application/json")
+                return HttpResponse(json.dumps(result), content_type="application/json")
 
-        return HttpResponse(json.dumps({'result':'not_found_error'}), mimetype="application/json")
+        return HttpResponse(json.dumps({'result':'not_found_error'}), content_type="application/json")
 
 
 def sample():
