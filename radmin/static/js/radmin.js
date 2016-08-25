@@ -31,17 +31,36 @@ $r(function(){
 radmin.build_ui = function(data){
 	// we are gonna hijack the django admin container  a bit
 	var container = document.getElementById("container");
-	var header = document.getElementById("header");
-	var user_tools = document.getElementById("user-tools");
+	
+	var header;
+	if (document.getElementById("header")){
+		header = document.getElementById("header");
+	}else {
+		// using grappelli which used diff names for id's
+		header = document.getElementById("grp-header");
+	}
+	var user_tools;
+	if (document.getElementById("user-tools")){
+		user_tools = document.getElementById("user-tools");
+	}else {
+		// using grappelli which used diff names for id's
+		user_tools = document.getElementById("grp-user-tools");
+	}
 	// add a simple link that enables disables radmin
-	user_tools.innerHTML +="/ "
+	// look bleh, disable it
+	// user_tools.innerHTML +="/ "
 	var radmin_link = document.createElement("a");
 
-	radmin_link.innerHTML = "Radmin Console";
+	radmin_link.innerHTML = "Rync Console";
 	radmin_link.href = "#";
 	radmin_link.id = "radmin-console-link"
 	radmin.link = radmin_link;
-	user_tools.appendChild(radmin_link);
+	
+	var node = document.createElement("LI")
+	node.appendChild(radmin_link)
+	user_tools.appendChild(node);
+	
+	//user_tools.appendChild(radmin_link);
 	var console_wrap = document.createElement('div');
 	console_wrap.id = "radmin-console-wrap";
 	container.appendChild(console_wrap);
